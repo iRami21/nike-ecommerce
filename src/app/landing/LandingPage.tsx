@@ -90,15 +90,15 @@ export default function LandingPage() {
   ]
 
   const TESTIMONIALS = [
-    { quote: '"Ordered my Air Max 270 on a Tuesday, arrived Thursday. Quality is insane — feels 100% legit. NikeX is my go-to from now on."', name: 'Marco Reyes',  role: 'Manila, Philippines',  initials: 'MR', color: '#ff1a1a',          textColor: '#fff' },
+    { quote: '"Ordered my Air Max 270 on a Tuesday, arrived Thursday. Quality is insane — feels 100% legit. Nike is my go-to from now on."', name: 'Marco Reyes',  role: 'Manila, Philippines',  initials: 'MR', color: '#ff1a1a',          textColor: '#fff' },
     { quote: '"The website is so clean and easy to navigate. Found my size in seconds, checkout was smooth, and the packaging was premium."',  name: 'Angela Cruz',  role: 'Cebu, Philippines',    initials: 'AC', color: '#3ecf8e',          textColor: '#000' },
     { quote: '"Got the Jordan 1 Retro during the flash sale. Saved ₱2,000! COD was available and the rider was on time. Will order again."',  name: 'Diego Lim',    role: 'Davao, Philippines',   initials: 'DL', color: '#f0a500',          textColor: '#000' },
   ]
 
   const CHANNELS = [
-    { icon: '🌐', name: 'NikeX Website',       desc: 'Our official website offers the full catalog, exclusive web-only drops, member discounts, and all payment methods.',          tag: 'Full Catalog · Exclusive Drops'   },
+    { icon: '🌐', name: 'Nike Website',       desc: 'Our official website offers the full catalog, exclusive web-only drops, member discounts, and all payment methods.',          tag: 'Full Catalog · Exclusive Drops'   },
     { icon: '🛍️', name: 'Shopee & Lazada',     desc: 'Find us on Southeast Asia\'s biggest marketplaces. Enjoy platform vouchers, flash deals, and integrated buyer protection.',  tag: 'Vouchers · Buyer Protection'      },
-    { icon: '📱', name: 'NikeX Mobile App',     desc: 'App-exclusive deals, push notifications for new drops, AR try-on features, and one-tap reorder of your favorites.',          tag: 'AR Try-On · Push Alerts'          },
+    { icon: '📱', name: 'Nike Mobile App',     desc: 'App-exclusive deals, push notifications for new drops, AR try-on features, and one-tap reorder of your favorites.',          tag: 'AR Try-On · Push Alerts'          },
     { icon: '📘', name: 'Facebook & Instagram', desc: 'Shop via Facebook Shops and Instagram Shopping. Discover styled outfits and DM us for personalized recommendations.',         tag: 'Social Commerce · DM Orders'      },
     { icon: '🏪', name: 'Physical Stores',      desc: 'Visit our flagship stores in SM, Ayala, and Robinsons Malls nationwide. Try before you buy with our style consultants.',     tag: 'Try Before Buy · In-Store Only'   },
     { icon: '📦', name: 'TikTok Shop',          desc: 'Watch live product demos, shop during live streams, and get exclusive TikTok-only coupon codes.',                            tag: 'Live Selling · TikTok Coupons'    },
@@ -106,6 +106,193 @@ export default function LandingPage() {
 
   return (
     <>
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,700&family=Barlow+Condensed:wght@300;400;600;700;900&display=swap');
+
+        .landing-root { background:#080808; color:#f5f5f0; font-family:'Barlow',sans-serif; overflow-x:hidden; }
+        .bebas { font-family:'Bebas Neue',sans-serif; }
+        .cond  { font-family:'Barlow Condensed',sans-serif; }
+
+        /* NAV */
+        .l-nav { position:fixed; top:0; left:0; right:0; z-index:999; display:flex; align-items:center; justify-content:space-between; padding:0 48px; height:64px; border-bottom:1px solid rgba(255,255,255,0.06); transition:background .3s; }
+        .l-nav-logo { font-family:'Bebas Neue',sans-serif; font-size:26px; letter-spacing:4px; color:#f5f5f0; text-decoration:none; }
+        .l-nav-logo span { color:#ff1a1a; }
+        .l-nav-links { display:flex; gap:32px; list-style:none; }
+        .l-nav-links a { color:#888; font-size:13px; font-weight:500; letter-spacing:.5px; text-decoration:none; transition:color .15s; }
+        .l-nav-links a:hover { color:#f5f5f0; }
+        .l-nav-right { display:flex; align-items:center; gap:12px; }
+        .btn-ghost { padding:9px 22px; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; border-radius:6px; cursor:pointer; text-decoration:none; background:transparent; color:#f5f5f0; border:1px solid rgba(255,255,255,0.2); transition:all .15s; }
+        .btn-ghost:hover { border-color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.05); }
+        .btn-solid { padding:9px 22px; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; border-radius:6px; cursor:pointer; text-decoration:none; background:#ff1a1a; color:#fff; border:1px solid transparent; transition:all .15s; }
+        .btn-solid:hover { background:#cc0000; }
+
+        /* HERO */
+        .l-hero { min-height:100vh; display:flex; align-items:center; position:relative; overflow:hidden; padding:100px 48px 60px; }
+        .hero-bg { position:absolute; inset:0; background:radial-gradient(ellipse 70% 80% at 80% 50%,rgba(255,26,26,0.09) 0%,transparent 65%), radial-gradient(ellipse 40% 60% at 20% 80%,rgba(255,26,26,0.04) 0%,transparent 60%), #080808; }
+        .hero-grid { position:absolute; inset:0; background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,0.025) 59px,rgba(255,255,255,0.025) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,0.025) 59px,rgba(255,255,255,0.025) 60px); }
+        .hero-stripe { position:absolute; left:0; top:0; bottom:0; width:4px; background:#ff1a1a; }
+        .hero-content { position:relative; z-index:2; max-width:660px; }
+        .hero-pill { display:inline-flex; align-items:center; gap:8px; background:rgba(255,26,26,0.1); border:1px solid rgba(255,26,26,0.35); color:#ff1a1a; font-size:11px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; padding:7px 16px; border-radius:100px; margin-bottom:28px; }
+        .hero-pill-dot { width:7px; height:7px; border-radius:50%; background:#ff1a1a; animation:blink 1.6s ease-in-out infinite; }
+        @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.25} }
+        .hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(80px,10vw,130px); line-height:.88; letter-spacing:2px; color:#f5f5f0; margin-bottom:20px; }
+        .hero-title .red { color:#ff1a1a; }
+        .hero-title .stroke { -webkit-text-stroke:2px #f5f5f0; color:transparent; }
+        .hero-sub { font-family:'Barlow Condensed',sans-serif; font-size:17px; font-weight:300; letter-spacing:3px; text-transform:uppercase; color:#888; margin-bottom:40px; max-width:480px; }
+        .hero-btns { display:flex; gap:14px; flex-wrap:wrap; }
+        .btn-hero-primary { background:#ff1a1a; color:#fff; border:none; padding:16px 40px; font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase; border-radius:6px; cursor:pointer; text-decoration:none; transition:background .15s,transform .15s; display:inline-block; box-shadow:0 8px 32px rgba(255,26,26,0.25); }
+        .btn-hero-primary:hover { background:#cc0000; transform:translateY(-2px); }
+        .btn-hero-ghost { background:transparent; color:#f5f5f0; border:1px solid rgba(255,255,255,0.22); padding:15px 32px; font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:700; letter-spacing:2px; text-transform:uppercase; border-radius:6px; cursor:pointer; text-decoration:none; transition:border-color .15s,background .15s; display:inline-block; }
+        .btn-hero-ghost:hover { border-color:rgba(255,255,255,.5); background:rgba(255,255,255,.04); }
+        .hero-shoe { position:absolute; right:48px; bottom:-30px; font-size:clamp(160px,20vw,260px); line-height:1; filter:drop-shadow(0 0 60px rgba(255,26,26,.2)); animation:float 4.5s ease-in-out infinite; transform:rotate(-18deg); user-select:none; transition:opacity .4s ease; }
+        @keyframes float { 0%,100%{transform:rotate(-18deg) translateY(0)} 50%{transform:rotate(-18deg) translateY(-18px)} }
+        .hero-stats { position:absolute; bottom:48px; right:48px; display:flex; gap:36px; }
+        .hero-stat .num { font-family:'Bebas Neue',sans-serif; font-size:36px; color:#f5f5f0; line-height:1; }
+        .hero-stat .lbl { font-size:10px; font-weight:600; letter-spacing:2px; color:#555; text-transform:uppercase; margin-top:2px; }
+        .hero-scroll { position:absolute; bottom:32px; left:48px; display:flex; align-items:center; gap:10px; color:#555; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; }
+        .hero-scroll-line { width:40px; height:1px; background:#333; }
+        .hero-dots { position:absolute; bottom:48px; left:48px; display:flex; gap:8px; }
+        .hero-dot { height:3px; border-radius:9px; transition:all .3s; cursor:pointer; border:none; padding:0; }
+
+        /* MARQUEE */
+        .marquee-wrap { border-top:1px solid #222; border-bottom:1px solid #222; background:#101010; overflow:hidden; padding:14px 0; }
+        .marquee-inner { display:flex; animation:marquee 18s linear infinite; width:max-content; }
+        .marquee-item { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:3px; color:#555; white-space:nowrap; padding:0 40px; }
+        .marquee-item span { color:#ff1a1a; margin-right:40px; }
+        @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+        /* SECTIONS */
+        .l-section { padding:100px 48px; }
+        .l-section-dark { padding:100px 48px; background:#101010; }
+        .eyebrow { font-family:'Barlow Condensed',sans-serif; font-size:11px; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#ff1a1a; margin-bottom:14px; }
+        .sec-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(44px,5vw,68px); letter-spacing:2px; color:#f5f5f0; line-height:1; margin-bottom:16px; }
+        .sec-title .red { color:#ff1a1a; }
+        .sec-sub { font-size:16px; color:#888; max-width:520px; line-height:1.7; margin-bottom:48px; }
+
+        /* PRODUCTS */
+        .products-header { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; }
+        .view-all { font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#ff1a1a; text-decoration:none; border-bottom:1px solid rgba(255,26,26,.35); padding-bottom:2px; transition:border-color .15s; }
+        .view-all:hover { border-color:#ff1a1a; }
+        .products-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:18px; }
+        .product-card { background:#161616; border:1px solid #222; border-radius:12px; overflow:hidden; cursor:pointer; position:relative; transition:transform .2s,border-color .2s,box-shadow .2s; }
+        .product-card:hover { transform:translateY(-6px); border-color:#333; box-shadow:0 20px 60px rgba(0,0,0,.5); }
+        .product-card.big { grid-column:span 2; grid-row:span 2; }
+        .product-img-wrap { height:200px; background:#1e1e1e; display:flex; align-items:center; justify-content:center; font-size:80px; position:relative; overflow:hidden; }
+        .product-card.big .product-img-wrap { height:360px; font-size:140px; }
+        .product-img-glow { position:absolute; inset:0; background:radial-gradient(circle at 50% 100%,rgba(255,26,26,.1),transparent 60%); }
+        .p-badge { position:absolute; top:12px; left:12px; font-family:'Barlow Condensed',sans-serif; font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 10px; border-radius:4px; color:#fff; }
+        .badge-new     { background:#ff1a1a; }
+        .badge-hot     { background:#f0a500; }
+        .badge-limited { background:#3ecf8e; color:#000; }
+        .p-wish { position:absolute; top:12px; right:12px; width:30px; height:30px; background:rgba(0,0,0,.6); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:15px; cursor:pointer; transition:transform .15s; border:none; }
+        .p-wish:hover { transform:scale(1.15); }
+        .product-info { padding:16px; }
+        .p-name { font-size:15px; font-weight:600; color:#f5f5f0; margin-bottom:4px; }
+        .p-cat  { font-size:12px; color:#555; margin-bottom:10px; }
+        .p-price { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:700; color:#f5f5f0; }
+        .p-old   { font-size:12px; color:#555; text-decoration:line-through; margin-left:6px; }
+        .p-stars { color:#f0a500; font-size:12px; }
+        .p-cta { margin-top:12px; width:100%; padding:10px; border:none; background:#ff1a1a; color:#fff; font-family:'Barlow Condensed',sans-serif; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; border-radius:6px; cursor:pointer; transition:background .15s; }
+        .p-cta:hover { background:#cc0000; }
+
+        /* CATEGORIES */
+        .cats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+        .cat-item { position:relative; overflow:hidden; height:280px; cursor:pointer; display:flex; align-items:flex-end; padding:24px; }
+        .cat-item.big { grid-column:span 2; height:380px; }
+        .cat-bg-el { position:absolute; inset:0; background:#1e1e1e; display:flex; align-items:center; justify-content:center; font-size:100px; transition:transform .4s ease; }
+        .cat-item.big .cat-bg-el { font-size:160px; }
+        .cat-item:hover .cat-bg-el { transform:scale(1.06); }
+        .cat-overlay { position:absolute; inset:0; background:linear-gradient(to top,rgba(8,8,8,.85) 0%,rgba(8,8,8,.2) 60%,transparent 100%); transition:opacity .3s; }
+        .cat-item:hover .cat-overlay { opacity:.7; }
+        .cat-info { position:relative; z-index:2; }
+        .cat-name  { font-family:'Bebas Neue',sans-serif; font-size:30px; letter-spacing:2px; color:#f5f5f0; line-height:1; margin-bottom:4px; }
+        .cat-item.big .cat-name { font-size:48px; }
+        .cat-count { font-size:12px; color:#888; letter-spacing:1px; }
+        .cat-arrow { position:absolute; top:20px; right:20px; width:36px; height:36px; border:1px solid rgba(255,255,255,.2); border-radius:50%; display:flex; align-items:center; justify-content:center; color:#f5f5f0; font-size:16px; z-index:2; opacity:0; transform:translateX(-6px); transition:opacity .25s,transform .25s; }
+        .cat-item:hover .cat-arrow { opacity:1; transform:translateX(0); }
+
+        /* FEATURES */
+        .features-grid { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center; }
+        .features-list { display:flex; flex-direction:column; gap:20px; }
+        .feature-item { display:flex; gap:18px; padding:20px; background:#161616; border:1px solid #222; border-radius:10px; transition:border-color .2s; }
+        .feature-item:hover { border-color:#333; }
+        .feature-icon { width:44px; height:44px; border-radius:8px; background:rgba(255,26,26,.1); border:1px solid rgba(255,26,26,.2); flex-shrink:0; display:flex; align-items:center; justify-content:center; font-size:20px; }
+        .feature-title { font-size:15px; font-weight:600; color:#f5f5f0; margin-bottom:4px; }
+        .feature-desc  { font-size:13px; color:#888; line-height:1.6; }
+        .features-visual { background:#161616; border:1px solid #222; border-radius:16px; padding:40px; text-align:center; position:relative; overflow:hidden; }
+        .features-visual-glow { position:absolute; inset:0; background:radial-gradient(circle at 50% 50%,rgba(255,26,26,.08),transparent 70%); pointer-events:none; }
+
+        /* TESTIMONIALS */
+        .testi-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+        .testi-card { background:#161616; border:1px solid #222; border-radius:12px; padding:28px; transition:border-color .2s; }
+        .testi-card:hover { border-color:#333; }
+        .testi-stars { color:#f0a500; font-size:14px; margin-bottom:14px; }
+        .testi-quote { font-size:14px; color:#888; line-height:1.8; margin-bottom:20px; font-style:italic; }
+        .testi-author { display:flex; align-items:center; gap:12px; }
+        .testi-avatar { width:36px; height:36px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:700; flex-shrink:0; }
+        .testi-name { font-size:13px; font-weight:600; color:#f5f5f0; }
+        .testi-role { font-size:11px; color:#555; }
+
+        /* CHANNELS */
+        .channels-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+        .channel-card { background:#161616; border:1px solid #222; border-radius:12px; padding:28px; position:relative; overflow:hidden; transition:border-color .2s,transform .2s; }
+        .channel-card:hover { border-color:rgba(255,26,26,.4); transform:translateY(-4px); }
+        .channel-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:#ff1a1a; opacity:0; transition:opacity .2s; }
+        .channel-card:hover::before { opacity:1; }
+        .channel-icon { font-size:36px; margin-bottom:16px; display:block; }
+        .channel-name { font-family:'Bebas Neue',sans-serif; font-size:24px; letter-spacing:1px; color:#f5f5f0; margin-bottom:8px; }
+        .channel-desc { font-size:13px; color:#888; line-height:1.7; margin-bottom:16px; }
+        .channel-tag  { display:inline-flex; font-size:9px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:4px 10px; border-radius:4px; background:rgba(255,26,26,.1); color:#ff1a1a; border:1px solid rgba(255,26,26,.2); }
+
+        /* CTA */
+        .cta-section { position:relative; overflow:hidden; text-align:center; padding:120px 48px; }
+        .cta-bg { position:absolute; inset:0; background:radial-gradient(ellipse 80% 60% at 50% 50%,rgba(255,26,26,.12) 0%,transparent 70%), #101010; }
+        .cta-grid { position:absolute; inset:0; background-image:repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(255,255,255,.02) 59px,rgba(255,255,255,.02) 60px),repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(255,255,255,.02) 59px,rgba(255,255,255,.02) 60px); }
+        .cta-content { position:relative; z-index:2; }
+        .cta-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(64px,8vw,100px); letter-spacing:3px; color:#f5f5f0; line-height:1; margin-bottom:20px; }
+        .cta-title .stroke { -webkit-text-stroke:2px #f5f5f0; color:transparent; }
+        .cta-email-wrap { display:flex; max-width:440px; margin:40px auto 0; background:#1e1e1e; border:1px solid #333; border-radius:8px; overflow:hidden; }
+        .cta-email-input { flex:1; background:transparent; border:none; outline:none; padding:14px 18px; color:#f5f5f0; font-size:14px; font-family:'Barlow',sans-serif; }
+        .cta-email-input::placeholder { color:#555; }
+        .cta-email-btn { background:#ff1a1a; color:#fff; border:none; padding:0 24px; font-family:'Barlow Condensed',sans-serif; font-size:13px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; cursor:pointer; transition:background .15s; flex-shrink:0; }
+        .cta-email-btn:hover { background:#cc0000; }
+
+        /* FOOTER */
+        .l-footer { background:#101010; border-top:1px solid #222; padding:60px 48px 32px; }
+        .footer-top { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:48px; }
+        .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:38px; letter-spacing:4px; color:#f5f5f0; margin-bottom:10px; }
+        .footer-logo span { color:#ff1a1a; }
+        .footer-tagline { font-size:13px; color:#555; margin-bottom:20px; line-height:1.6; }
+        .footer-socials { display:flex; gap:10px; }
+        .social-btn { width:36px; height:36px; border:1px solid #333; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; cursor:pointer; transition:border-color .15s; text-decoration:none; }
+        .social-btn:hover { border-color:#ff1a1a; }
+        .footer-col h4 { font-size:10px; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:#f5f5f0; margin-bottom:16px; }
+        .footer-col ul { list-style:none; }
+        .footer-col ul li { margin-bottom:10px; }
+        .footer-col ul li a { font-size:13px; color:#555; text-decoration:none; transition:color .15s; }
+        .footer-col ul li a:hover { color:#f5f5f0; }
+        .footer-bottom { border-top:1px solid #222; padding-top:24px; display:flex; align-items:center; justify-content:space-between; }
+        .footer-copy { font-size:12px; color:#555; }
+        .footer-tags { display:flex; gap:8px; }
+        .footer-tag { font-size:11px; color:#555; padding:4px 10px; border:1px solid #333; border-radius:4px; }
+
+        /* REVEAL */
+        .reveal { opacity:0; transform:translateY(24px); transition:opacity .6s ease,transform .6s ease; }
+        .reveal.visible { opacity:1; transform:translateY(0); }
+        .reveal-d1 { transition-delay:.1s; }
+        .reveal-d2 { transition-delay:.2s; }
+        .reveal-d3 { transition-delay:.3s; }
+        .reveal-d4 { transition-delay:.4s; }
+
+        /* TOAST */
+        .toast { position:fixed; bottom:28px; right:28px; z-index:9999; background:#161616; border:1px solid #333; border-radius:10px; padding:14px 20px; display:flex; align-items:center; gap:12px; pointer-events:none; transition:all .3s ease; }
+        .toast-text { font-size:13px; color:#f5f5f0; font-weight:500; }
+        .toast-sub  { font-size:11px; color:#888; margin-top:1px; }
+
+        /* WISHLIST HEART */
+        .wished { color:#ff1a1a; }
+      `}</style>
+
       <div className="landing-root">
 
         {/* NAV */}
@@ -321,7 +508,7 @@ export default function LandingPage() {
               <span className="stroke">MOVE.</span>
             </div>
             <p style={{ fontSize:'16px', color:'#888', marginBottom:'40px', maxWidth:'480px', margin:'0 auto 40px', lineHeight:'1.7' }}>
-              Join 120,000+ athletes and sneakerheads who shop with NikeX. Get exclusive access to limited drops and member-only deals.
+              Join 120,000+ athletes and sneakerheads who shop with Nike. Get exclusive access to limited drops and member-only deals.
             </p>
             <div style={{ display:'flex', gap:'14px', justifyContent:'center', flexWrap:'wrap' }}>
               <a href="/login" className="btn-hero-primary">Create Free Account</a>
@@ -368,7 +555,7 @@ export default function LandingPage() {
             ))}
           </div>
           <div className="footer-bottom">
-            <div className="footer-copy">© 2026 NikeX Store · E-Commerce Subject · Part 5</div>
+            <div className="footer-copy">© 2026 Nike Store · E-Commerce Subject · Part 5</div>
             <div className="footer-tags">
               <span className="footer-tag">Next.js 14</span>
               <span className="footer-tag">Node.js</span>
